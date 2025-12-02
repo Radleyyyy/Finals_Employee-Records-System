@@ -22,115 +22,160 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnCreate = New System.Windows.Forms.Button()
-        Me.btnRead = New System.Windows.Forms.Button()
-        Me.btnUpdate = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.ButtonCreate = New System.Windows.Forms.Button()
+        Me.ButtonRead = New System.Windows.Forms.Button()
+        Me.ButtonUpdate = New System.Windows.Forms.Button()
+        Me.buttonDelete = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtID = New System.Windows.Forms.TextBox()
-        Me.txtName = New System.Windows.Forms.TextBox()
-        Me.txtPosition = New System.Windows.Forms.TextBox()
-        Me.txtSalary = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtDepartment = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Mysql = New System.Windows.Forms.Button()
+        Me.DatGridViewEmployees = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.dgvEmployees = New System.Windows.Forms.DataGridView()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.TextBoxDepartment = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBoxSalary = New System.Windows.Forms.TextBox()
+        Me.TextBoxPosition = New System.Windows.Forms.TextBox()
+        Me.TextBoxName = New System.Windows.Forms.TextBox()
+        Me.TextBoxID = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.dgvEmployees, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DatGridViewEmployees, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnCreate
+        'ButtonCreate
         '
-        Me.btnCreate.Location = New System.Drawing.Point(276, 125)
-        Me.btnCreate.Name = "btnCreate"
-        Me.btnCreate.Size = New System.Drawing.Size(100, 20)
-        Me.btnCreate.TabIndex = 0
-        Me.btnCreate.Text = "CREATE"
-        Me.btnCreate.UseVisualStyleBackColor = True
+        Me.ButtonCreate.Location = New System.Drawing.Point(276, 71)
+        Me.ButtonCreate.Name = "ButtonCreate"
+        Me.ButtonCreate.Size = New System.Drawing.Size(100, 20)
+        Me.ButtonCreate.TabIndex = 0
+        Me.ButtonCreate.Text = "CREATE"
+        Me.ButtonCreate.UseVisualStyleBackColor = True
         '
-        'btnRead
+        'ButtonRead
         '
-        Me.btnRead.Location = New System.Drawing.Point(276, 167)
-        Me.btnRead.Name = "btnRead"
-        Me.btnRead.Size = New System.Drawing.Size(100, 20)
-        Me.btnRead.TabIndex = 1
-        Me.btnRead.Text = "READ"
-        Me.btnRead.UseVisualStyleBackColor = True
+        Me.ButtonRead.Location = New System.Drawing.Point(276, 104)
+        Me.ButtonRead.Name = "ButtonRead"
+        Me.ButtonRead.Size = New System.Drawing.Size(100, 20)
+        Me.ButtonRead.TabIndex = 1
+        Me.ButtonRead.Text = "READ"
+        Me.ButtonRead.UseVisualStyleBackColor = True
         '
-        'btnUpdate
+        'ButtonUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(276, 204)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(100, 20)
-        Me.btnUpdate.TabIndex = 2
-        Me.btnUpdate.Text = "UPDATE"
-        Me.btnUpdate.UseVisualStyleBackColor = True
+        Me.ButtonUpdate.Location = New System.Drawing.Point(276, 145)
+        Me.ButtonUpdate.Name = "ButtonUpdate"
+        Me.ButtonUpdate.Size = New System.Drawing.Size(100, 20)
+        Me.ButtonUpdate.TabIndex = 2
+        Me.ButtonUpdate.Text = "UPDATE"
+        Me.ButtonUpdate.UseVisualStyleBackColor = True
         '
-        'btnDelete
+        'buttonDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(276, 242)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(100, 20)
-        Me.btnDelete.TabIndex = 3
-        Me.btnDelete.Text = "DELETE"
-        Me.btnDelete.UseVisualStyleBackColor = True
+        Me.buttonDelete.Location = New System.Drawing.Point(276, 185)
+        Me.buttonDelete.Name = "buttonDelete"
+        Me.buttonDelete.Size = New System.Drawing.Size(100, 20)
+        Me.buttonDelete.TabIndex = 3
+        Me.buttonDelete.Text = "DELETE"
+        Me.buttonDelete.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.GroupBox1.Controls.Add(Me.Button5)
-        Me.GroupBox1.Controls.Add(Me.dgvEmployees)
+        Me.GroupBox1.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Mysql)
+        Me.GroupBox1.Controls.Add(Me.DatGridViewEmployees)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.txtDepartment)
+        Me.GroupBox1.Controls.Add(Me.TextBoxDepartment)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.txtSalary)
-        Me.GroupBox1.Controls.Add(Me.txtPosition)
-        Me.GroupBox1.Controls.Add(Me.txtName)
-        Me.GroupBox1.Controls.Add(Me.txtID)
-        Me.GroupBox1.Controls.Add(Me.btnDelete)
-        Me.GroupBox1.Controls.Add(Me.btnCreate)
-        Me.GroupBox1.Controls.Add(Me.btnRead)
-        Me.GroupBox1.Controls.Add(Me.btnUpdate)
+        Me.GroupBox1.Controls.Add(Me.TextBoxSalary)
+        Me.GroupBox1.Controls.Add(Me.TextBoxPosition)
+        Me.GroupBox1.Controls.Add(Me.TextBoxName)
+        Me.GroupBox1.Controls.Add(Me.TextBoxID)
+        Me.GroupBox1.Controls.Add(Me.buttonDelete)
+        Me.GroupBox1.Controls.Add(Me.ButtonCreate)
+        Me.GroupBox1.Controls.Add(Me.ButtonRead)
+        Me.GroupBox1.Controls.Add(Me.ButtonUpdate)
         Me.GroupBox1.Location = New System.Drawing.Point(61, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(432, 433)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         '
-        'txtID
+        'Label6
         '
-        Me.txtID.Location = New System.Drawing.Point(100, 126)
-        Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(133, 20)
-        Me.txtID.TabIndex = 4
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(30, 16)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(360, 36)
+        Me.Label6.TabIndex = 16
+        Me.Label6.Text = "Employee Record System"
         '
-        'txtName
+        'Mysql
         '
-        Me.txtName.Location = New System.Drawing.Point(100, 164)
-        Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(133, 20)
-        Me.txtName.TabIndex = 5
+        Me.Mysql.Location = New System.Drawing.Point(132, 267)
+        Me.Mysql.Name = "Mysql"
+        Me.Mysql.Size = New System.Drawing.Size(156, 46)
+        Me.Mysql.TabIndex = 15
+        Me.Mysql.Text = "Connect MySQL"
+        Me.Mysql.UseVisualStyleBackColor = True
         '
-        'txtPosition
+        'DatGridViewEmployees
         '
-        Me.txtPosition.Location = New System.Drawing.Point(100, 202)
-        Me.txtPosition.Name = "txtPosition"
-        Me.txtPosition.Size = New System.Drawing.Size(133, 20)
-        Me.txtPosition.TabIndex = 6
+        Me.DatGridViewEmployees.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.DatGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DatGridViewEmployees.Location = New System.Drawing.Point(30, 319)
+        Me.DatGridViewEmployees.Name = "DatGridViewEmployees"
+        Me.DatGridViewEmployees.Size = New System.Drawing.Size(372, 103)
+        Me.DatGridViewEmployees.TabIndex = 14
         '
-        'txtSalary
+        'Label5
         '
-        Me.txtSalary.Location = New System.Drawing.Point(100, 243)
-        Me.txtSalary.Name = "txtSalary"
-        Me.txtSalary.Size = New System.Drawing.Size(133, 20)
-        Me.txtSalary.TabIndex = 7
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(9, 225)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(85, 13)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "DEPARTMENT:"
+        '
+        'TextBoxDepartment
+        '
+        Me.TextBoxDepartment.Location = New System.Drawing.Point(100, 222)
+        Me.TextBoxDepartment.Name = "TextBoxDepartment"
+        Me.TextBoxDepartment.Size = New System.Drawing.Size(133, 20)
+        Me.TextBoxDepartment.TabIndex = 12
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(42, 189)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(52, 13)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "SALARY:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(33, 149)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(61, 13)
+        Me.Label3.TabIndex = 10
+        Me.Label3.Text = "POSITION:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(53, 111)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(41, 13)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "NAME:"
         '
         'Label1
         '
@@ -140,65 +185,33 @@ Partial Class Form1
         Me.Label1.Size = New System.Drawing.Size(0, 13)
         Me.Label1.TabIndex = 8
         '
-        'Label2
+        'TextBoxSalary
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(53, 167)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(41, 13)
-        Me.Label2.TabIndex = 9
-        Me.Label2.Text = "NAME:"
+        Me.TextBoxSalary.Location = New System.Drawing.Point(100, 186)
+        Me.TextBoxSalary.Name = "TextBoxSalary"
+        Me.TextBoxSalary.Size = New System.Drawing.Size(133, 20)
+        Me.TextBoxSalary.TabIndex = 7
         '
-        'Label3
+        'TextBoxPosition
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(33, 204)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(61, 13)
-        Me.Label3.TabIndex = 10
-        Me.Label3.Text = "POSITION:"
+        Me.TextBoxPosition.Location = New System.Drawing.Point(100, 146)
+        Me.TextBoxPosition.Name = "TextBoxPosition"
+        Me.TextBoxPosition.Size = New System.Drawing.Size(133, 20)
+        Me.TextBoxPosition.TabIndex = 6
         '
-        'Label4
+        'TextBoxName
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(42, 246)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(52, 13)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "SALARY:"
+        Me.TextBoxName.Location = New System.Drawing.Point(100, 108)
+        Me.TextBoxName.Name = "TextBoxName"
+        Me.TextBoxName.Size = New System.Drawing.Size(133, 20)
+        Me.TextBoxName.TabIndex = 5
         '
-        'txtDepartment
+        'TextBoxID
         '
-        Me.txtDepartment.Location = New System.Drawing.Point(100, 281)
-        Me.txtDepartment.Name = "txtDepartment"
-        Me.txtDepartment.Size = New System.Drawing.Size(133, 20)
-        Me.txtDepartment.TabIndex = 12
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 284)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(88, 13)
-        Me.Label5.TabIndex = 13
-        Me.Label5.Text = "DEPARTMENT: "
-        '
-        'dgvEmployees
-        '
-        Me.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvEmployees.Location = New System.Drawing.Point(30, 319)
-        Me.dgvEmployees.Name = "dgvEmployees"
-        Me.dgvEmployees.Size = New System.Drawing.Size(372, 103)
-        Me.dgvEmployees.TabIndex = 14
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(246, 65)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(156, 46)
-        Me.Button5.TabIndex = 15
-        Me.Button5.Text = "Connect MySQL"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.TextBoxID.Location = New System.Drawing.Point(100, 72)
+        Me.TextBoxID.Name = "TextBoxID"
+        Me.TextBoxID.Size = New System.Drawing.Size(133, 20)
+        Me.TextBoxID.TabIndex = 4
         '
         'Form1
         '
@@ -210,26 +223,27 @@ Partial Class Form1
         Me.Text = "Form1"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.dgvEmployees, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DatGridViewEmployees, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents btnCreate As Button
-    Friend WithEvents btnRead As Button
-    Friend WithEvents btnUpdate As Button
-    Friend WithEvents btnDelete As Button
+    Friend WithEvents ButtonCreate As Button
+    Friend WithEvents ButtonRead As Button
+    Friend WithEvents ButtonUpdate As Button
+    Friend WithEvents buttonDelete As Button
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents dgvEmployees As DataGridView
+    Friend WithEvents DatGridViewEmployees As DataGridView
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtDepartment As TextBox
+    Friend WithEvents TextBoxDepartment As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents txtSalary As TextBox
-    Friend WithEvents txtPosition As TextBox
-    Friend WithEvents txtName As TextBox
-    Friend WithEvents txtID As TextBox
-    Friend WithEvents Button5 As Button
+    Friend WithEvents TextBoxSalary As TextBox
+    Friend WithEvents TextBoxPosition As TextBox
+    Friend WithEvents TextBoxName As TextBox
+    Friend WithEvents TextBoxID As TextBox
+    Friend WithEvents Mysql As Button
+    Friend WithEvents Label6 As Label
 End Class
