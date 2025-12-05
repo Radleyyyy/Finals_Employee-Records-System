@@ -1,19 +1,13 @@
 ﻿Imports MySql.Data.MySqlClient
-Imports System.Data
 
 Public Class Form1
+    Dim conn As MySqlConnection
+    Dim COMMAND As MySqlCommand
 
-    Private conn As New MySqlConnection("server=localhost;userid=root;password=root;database=employeerecordsystem;")
-    Private selectedId As Integer = -1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        DatGridViewEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DatGridViewEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DatGridViewEmployees.AllowUserToAddRows = False
-        DatGridViewEmployees.ReadOnly = True
 
-        LoadData()
     End Sub
 
     Private Sub LoadData()
@@ -34,13 +28,13 @@ Public Class Form1
         TextBoxPosition.Clear()
         TextBoxSalary.Clear()
         TextBoxDepartment.Clear()
-        selectedId = -1
+
     End Sub
 
     Private Sub DataGridViewEmployees_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DatGridViewEmployees.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = DatGridViewEmployees.Rows(e.RowIndex)
-            selectedId = Convert.ToInt32(row.Cells("id").Value)
+
             TextBoxName.Text = row.Cells("name").Value.ToString()
             TextBoxPosition.Text = row.Cells("position").Value.ToString()
             TextBoxSalary.Text = row.Cells("salary").Value.ToString()
@@ -65,20 +59,21 @@ Public Class Form1
         End If
 
         Try
-            Dim sql As String = "INSERT INTO employees (name, position, salary, department) VALUES (@n, @p, @s, @d)"
-            Dim cmd As New MySqlCommand(sql, conn)
-            cmd.Parameters.AddWithValue("@n", TextBoxName.Text.Trim())
-            cmd.Parameters.AddWithValue("@p", TextBoxPosition.Text.Trim())
-            cmd.Parameters.AddWithValue("@s", Decimal.Parse(TextBoxSalary.Text.Trim()))
-            cmd.Parameters.AddWithValue("@d", TextBoxDepartment.Text.Trim())
+            Dim query As String = "INSERT INTO employeerecordsystem (name, position, salary, department) VALUES (@Name, @Position, @Salary, @Department)"
 
-            conn.Open()
-            cmd.ExecuteNonQuery()
-            conn.Close()
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employee_record_system;")
+                conn.Open()
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@Name", TextBoxName.Text)
+                    cmd.Parameters.AddWithValue("@Position", (TextBoxPosition.Text))
+                    cmd.Parameters.AddWithValue("@Salary", TextBoxSalary.Text)
+                    cmd.Parameters.AddWithValue("@Department", TextBoxDepartment.Text)
+                    cmd.ExecuteNonQuery()
+                    MessageBox.Show("Record insert successfully!")
+                End Using
+            End Using
 
-            MessageBox.Show("Employee added.")
-            LoadData()
-            ClearFields()
+
         Catch ex As Exception
             If conn.State = ConnectionState.Open Then conn.Close()
             MessageBox.Show("Add error: " & ex.Message)
@@ -86,85 +81,107 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonUpdate_Click(sender As Object, e As EventArgs) Handles ButtonUpdate.Click
-        If selectedId = -1 Then
-            MessageBox.Show("Select a record first.")
-            Return
+        If DatGridViewEmployees.CurrentRow Is Nothing Then
+            MsgBox("Please select a row first.")
+            Exit Sub
         End If
 
-        If String.IsNullOrWhiteSpace(TextBoxName.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBoxPosition.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBoxSalary.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBoxDepartment.Text) Then
-            MessageBox.Show("Please fill all fields.")
-            Return
-        End If
-
-        If Not Decimal.TryParse(TextBoxSalary.Text, New Decimal()) Then
-            MessageBox.Show("Salary must be a number.")
-            Return
-        End If
+        Dim selectedID As Integer = DatGridViewEmployees.CurrentRow.Cells("id").Value
+        Dim query As String = "UPDATE employeerecordsystem SET name=@name, position=@position, salary=@salay, department=@department WHERE id=@id"
 
         Try
-            Dim sql As String = "UPDATE employees SET name=@n, position=@p, salary=@s, department=@d WHERE id=@id"
-            Dim cmd As New MySqlCommand(sql, conn)
-            cmd.Parameters.AddWithValue("@n", TextBoxName.Text.Trim())
-            cmd.Parameters.AddWithValue("@p", TextBoxPosition.Text.Trim())
-            cmd.Parameters.AddWithValue("@s", Decimal.Parse(TextBoxSalary.Text.Trim()))
-            cmd.Parameters.AddWithValue("@d", TextBoxDepartment.Text.Trim())
-            cmd.Parameters.AddWithValue("@id", selectedId)
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employee_record_system")
+                conn.Open()
+                Using cmd As New MySqlCommand(query, conn)
 
-            conn.Open()
-            cmd.ExecuteNonQuery()
-            conn.Close()
+                    cmd.Parameters.AddWithValue("@id", selectedID)
+                    cmd.Parameters.AddWithValue("@name", TextBoxName.Text)
+                    cmd.Parameters.AddWithValue("@position", TextBoxPosition.Text)
+                    cmd.Parameters.AddWithValue("@salary", TextBoxSalary.Text)
+                    cmd.Parameters.AddWithValue("@department", TextBoxDepartment.Text)
 
-            MessageBox.Show("Employee updated.")
-            LoadData()
-            ClearFields()
+                    cmd.ExecuteNonQuery()
+                    MessageBox.Show("Record Updated Successfully")
+                    TextBoxName.Clear()
+                    TextBoxPosition.Clear()
+                    TextBoxSalary.Clear()
+                    TextBoxDepartment.Clear()
+                End Using
+            End Using
         Catch ex As Exception
-            If conn.State = ConnectionState.Open Then conn.Close()
-            MessageBox.Show("Update error: " & ex.Message)
+            MsgBox(ex.Message)
         End Try
-    End Sub
 
-
-    Private Sub ButtonDelete1_Click(sender As Object, e As EventArgs) Handles buttonDelete.Click
-        If selectedId = -1 Then
-            MessageBox.Show("Select a record first.")
-            Return
-        End If
-
-        If MessageBox.Show("Are you sure you want to delete this record?", "Confirm", MessageBoxButtons.YesNo) = DialogResult.No Then
-            Return
-        End If
-
-        Try
-            Dim sql As String = "UPDATE employees SET is_deleted = 1 WHERE id=@id"
-            Dim cmd As New MySqlCommand(sql, conn)
-            cmd.Parameters.AddWithValue("@id", selectedId)
-
-            conn.Open()
-            cmd.ExecuteNonQuery()
-            conn.Close()
-
-            MessageBox.Show("Employee deleted.")
-            LoadData()
-            ClearFields()
-        Catch ex As Exception
-            If conn.State = ConnectionState.Open Then conn.Close()
-            MessageBox.Show("Delete error: " & ex.Message)
-        End Try
-    End Sub
-
-
-
-    Private Sub ButtonRead_Click(sender As Object, e As EventArgs) Handles ButtonRead.Click
         LoadData()
     End Sub
 
 
-    Private Sub ButtonDelete_Click(sender As Object, e As EventArgs) Handles buttonDelete.Click
-        ClearFields()
+    Private Sub ButtonDelete_Click(sender As Object, e As EventArgs) Handles ButtonDelete.Click
+        If DatGridViewEmployees.CurrentRow Is Nothing Then
+            MsgBox("there is no item left")
+            Exit Sub
+        End If
+
+        Dim selectedID As Integer = DatGridViewEmployees.CurrentRow.Cells("id").Value
+
+        Dim query As String = "DELETE FROM employeerecordsystem WHERE id=@id"
+
+        Try
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employee_record_system")
+                conn.Open()
+                Using cmd As New MySqlCommand(query, conn)
+
+                    cmd.Parameters.AddWithValue("@id", selectedID)
+                    cmd.ExecuteNonQuery()
+
+                    MessageBox.Show("Record Deleted Successfully")
+                    TextBoxName.Clear()
+                    TextBoxPosition.Clear()
+                    TextBoxSalary.Clear()
+                    TextBoxDepartment.Clear()
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+        LoadData()
     End Sub
+
+    Private Sub Mysql_Click(sender As Object, e As EventArgs) Handles Mysql.Click
+        conn = New MySqlConnection
+        conn.ConnectionString = "server=localhost; userid=root; password=root; database=employee_record_system;"
+
+        Try
+            conn.Open()
+            MessageBox.Show("Connected")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            conn.Close()
+        End Try
+    End Sub
+
+    Private Sub ButtonRead_Click(sender As Object, e As EventArgs) Handles ButtonRead.Click
+        Dim query As String = "SELECT * FROM employeerecordsystem;"
+        Try
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employee_record_system")
+                Dim adapter As New MySqlDataAdapter(query, conn)
+                Dim table As New DataTable()
+                adapter.Fill(table)
+                DatGridViewEmployees.DataSource = table
+                DatGridViewEmployees.Columns("id").Visible = False
+                TextBoxName.Clear()
+                TextBoxPosition.Clear()
+                TextBoxSalary.Clear()
+                TextBoxDepartment.Clear()
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+
 
 End Class
 

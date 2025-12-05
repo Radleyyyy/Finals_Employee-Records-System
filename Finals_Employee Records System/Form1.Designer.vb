@@ -25,7 +25,7 @@ Partial Class Form1
         Me.ButtonCreate = New System.Windows.Forms.Button()
         Me.ButtonRead = New System.Windows.Forms.Button()
         Me.ButtonUpdate = New System.Windows.Forms.Button()
-        Me.buttonDelete = New System.Windows.Forms.Button()
+        Me.ButtonDelete = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Mysql = New System.Windows.Forms.Button()
@@ -71,14 +71,14 @@ Partial Class Form1
         Me.ButtonUpdate.Text = "UPDATE"
         Me.ButtonUpdate.UseVisualStyleBackColor = True
         '
-        'buttonDelete
+        'ButtonDelete
         '
-        Me.buttonDelete.Location = New System.Drawing.Point(276, 185)
-        Me.buttonDelete.Name = "buttonDelete"
-        Me.buttonDelete.Size = New System.Drawing.Size(100, 20)
-        Me.buttonDelete.TabIndex = 3
-        Me.buttonDelete.Text = "DELETE"
-        Me.buttonDelete.UseVisualStyleBackColor = True
+        Me.ButtonDelete.Location = New System.Drawing.Point(276, 185)
+        Me.ButtonDelete.Name = "ButtonDelete"
+        Me.ButtonDelete.Size = New System.Drawing.Size(100, 20)
+        Me.ButtonDelete.TabIndex = 3
+        Me.ButtonDelete.Text = "DELETE"
+        Me.ButtonDelete.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -96,7 +96,7 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.TextBoxPosition)
         Me.GroupBox1.Controls.Add(Me.TextBoxName)
         Me.GroupBox1.Controls.Add(Me.TextBoxID)
-        Me.GroupBox1.Controls.Add(Me.buttonDelete)
+        Me.GroupBox1.Controls.Add(Me.ButtonDelete)
         Me.GroupBox1.Controls.Add(Me.ButtonCreate)
         Me.GroupBox1.Controls.Add(Me.ButtonRead)
         Me.GroupBox1.Controls.Add(Me.ButtonUpdate)
@@ -212,6 +212,7 @@ Partial Class Form1
         Me.TextBoxID.Name = "TextBoxID"
         Me.TextBoxID.Size = New System.Drawing.Size(133, 20)
         Me.TextBoxID.TabIndex = 4
+        Me.TextBoxID.Visible = False
         '
         'Form1
         '
@@ -231,7 +232,7 @@ Partial Class Form1
     Friend WithEvents ButtonCreate As Button
     Friend WithEvents ButtonRead As Button
     Friend WithEvents ButtonUpdate As Button
-    Friend WithEvents buttonDelete As Button
+    Friend WithEvents ButtonDelete As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents DatGridViewEmployees As DataGridView
     Friend WithEvents Label5 As Label
